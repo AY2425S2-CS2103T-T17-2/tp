@@ -40,6 +40,10 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    // https://se-education.org/guides/tutorials/ab3AddRemark.html
+    // #add-a-placeholder-element-for-remark-to-the-ui
+    @FXML
+    private Label remark;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.

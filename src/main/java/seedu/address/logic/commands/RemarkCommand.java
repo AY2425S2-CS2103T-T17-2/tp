@@ -34,7 +34,7 @@ public class RemarkCommand extends Command {
     public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Person: %1$s";
 
     private final Index index;
-//    private final String remark;
+    // private final String remark;
     private final Remark remark;
 
     /**

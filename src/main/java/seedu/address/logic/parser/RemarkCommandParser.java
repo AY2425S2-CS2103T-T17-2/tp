@@ -9,7 +9,17 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * For parsing remark commands.
+ */
 public class RemarkCommandParser implements Parser<RemarkCommand> {
+    /**
+     * Parses a remark command.
+     *
+     * @param args The arguments.
+     * @return A remark command.
+     * @throws ParseException A parsing error.
+     */
     public RemarkCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,

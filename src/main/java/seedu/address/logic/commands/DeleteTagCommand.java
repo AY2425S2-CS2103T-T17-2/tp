@@ -27,12 +27,11 @@ public class DeleteTagCommand extends Command {
     /**
      * The usage message for this command.
      */
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the specified tags from the patient identified by the index "
             + "number used in the last patient listing."
             + '\n'
-            + "Parameters: INDEX t/tag [t/more_tags]"
+            + "Parameters: INDEX t/tag [t/more_tags] OR INDEX t/all"
             + '\n'
             + "Example: " + COMMAND_WORD + " 39 t/High Blood Pressure "
             + "t/Seafood Allergy";
@@ -47,8 +46,10 @@ public class DeleteTagCommand extends Command {
      */
     private final HashSet<Tag> tagsToDelete;
 
+    private boolean delAllTags;
+
     /**
-     * Creates a {@code DeleteTagCommand}.
+     * Creates a {@code DeleteTagCommand} that does not delete everything.
      *
      * @param index The index of the patient to modify.
      * @param tagsToDelete The set of tags to remove.
@@ -56,6 +57,19 @@ public class DeleteTagCommand extends Command {
     public DeleteTagCommand(Index index, HashSet<Tag> tagsToDelete) {
         this.index = index;
         this.tagsToDelete = tagsToDelete;
+        this.delAllTags = false;
+    }
+
+    /**
+     * Creates a {@code DeleteTagCommand} that deletes everything.
+     *
+     * @param index The index of the patient to modify.
+     * @return The corresponding {@code DeleteTagCommand} object.
+     */
+    public DeleteTagCommand createDelAllTagsCmd(Index index) {
+        DeleteTagCommand ans = new DeleteTagCommand(index, null);
+        ans.delAllTags = true;
+        return ans;
     }
 
     /**

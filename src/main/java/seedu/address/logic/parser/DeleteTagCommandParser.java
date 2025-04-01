@@ -42,6 +42,19 @@ public class DeleteTagCommandParser implements Parser<DeleteTagCommand> {
 
         // Extract the tags to be deleted
         HashSet<String> tagStrsToDelete = new HashSet<>(argMM.getAllValues(PREFIX_TAG));
+
+        // t/all -> special untag everything
+        if (tagStrsToDelete.size() == 1) {
+            // Extract the string
+            String toCheck = null;   // Java gets mad if I don't initialize
+            for (String s : tagStrsToDelete) {
+                toCheck = s;
+            }
+            if (toCheck.equalsIgnoreCase("all")) {
+                return DeleteTagCommand.createDelAllTagsCmd(index);
+            }
+        }
+
         HashSet<Tag> tagsToDelete = new HashSet<>();
         for (String s : tagStrsToDelete) {
             tagsToDelete.add(new Tag(s));

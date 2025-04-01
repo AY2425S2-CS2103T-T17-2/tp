@@ -66,7 +66,7 @@ public class DeleteTagCommand extends Command {
      * @param index The index of the patient to modify.
      * @return The corresponding {@code DeleteTagCommand} object.
      */
-    public DeleteTagCommand createDelAllTagsCmd(Index index) {
+    public static DeleteTagCommand createDelAllTagsCmd(Index index) {
         DeleteTagCommand ans = new DeleteTagCommand(index, null);
         ans.delAllTags = true;
         return ans;
